@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mi Municipio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Mi Municipio</title>
 </head>
 <!-- LINK CSS -->
 <link rel="stylesheet" href="css/normalize.css">
@@ -12,14 +12,51 @@
 <link rel="stylesheet" href="css/unslider.css">
 <link rel="stylesheet" href="css/hamburgers.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css/buttons.dataTables.min.css">
 <!-- LINK JS -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.buttons.min.js"></script>
 <script src="js/wow.js"></script>
 <script src="js/unslider.js"></script>
 <script src="js/funtions.js"></script>
+<script src="datos/funcionarios_10_2016.js"></script>
 
 <body>
-    
+
+	<table id='datatableFuncionarios'>
+		<thead>
+			<tr><th>Año</th><th>Mes</th><th>Municipio</th><th>Documento</th><th>Nombres</th><th>Apellidos</th>
+			<th>Presupuestado</th><th>Devengado</th><th>Sexo</th><th>Estado</th><th>Año Ingreso</th><th>Discapacidad</th><th>Horario</th></tr>
+		</thead>
+		<tbody id="cuerpoFuncionarios">
+			
+		</tbody>
+	</table>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		var cuerpo = '';
+		for(var m = 0; m < funcionarios.length; m++){
+			cuerpo += "<tr><td>"+funcionarios[m].anho+"</td>"+
+			"<td>"+funcionarios[m].mes+"</td>"+
+			"<td>"+funcionarios[m].descripcionOee+"</td>"+
+			"<td>"+funcionarios[m].documento+"</td>"+
+			"<td>"+funcionarios[m].nombres+"</td>"+
+			"<td>"+funcionarios[m].apellidos+"</td>"+
+			"<td>"+funcionarios[m].presupuestado+"</td>"+
+			"<td>"+funcionarios[m].devengado+"</td>"+
+			"<td>"+funcionarios[m].sexo+"</td>"+
+			"<td>"+funcionarios[m].estado+"</td>"+
+			"<td>"+funcionarios[m].anhoIngreso+"</td>"+
+			"<td>"+funcionarios[m].discapacidad+"</td>"+
+			"<td>"+funcionarios[m].cargaHoraria+"</td></tr>";
+		}
+		$('#cuerpoFuncionarios').append(cuerpo);
+		$('#datatableFuncionarios').dataTable();
+	});
+	</script>
 </body>
 </html>
