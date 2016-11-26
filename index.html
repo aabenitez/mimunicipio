@@ -25,10 +25,32 @@
 
 <body>
 
+    <div class="header">
+        <div class="header__nav">
+            <h1 class="header__title">Mi Municipio</h1>
+            <ul class="header__menu">
+                <li class="header__item"><a href="#" class="header__link">Inicio</a></li>
+                <li class="header__item"><a href="#" class="header__link">Municipios</a></li>
+                <li class="header__item"><a href="#" class="header__link">Lorem Ipsum</a></li>
+            </ul>
+        </div>
+
+        <!-- Header en Responsive -->
+        <div class="header__nav--responsive">
+            <!-- Hamburguesa -->
+            <div class="hamburger hamburger--collapse">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
 	<table id='datatableFuncionarios'>
 		<thead>
 			<tr><th>Año</th><th>Mes</th><th>Municipio</th><th>Documento</th><th>Nombres</th><th>Apellidos</th>
-			<th>Presupuestado</th><th>Devengado</th><th>Sexo</th><th>Estado</th><th>Año Ingreso</th><th>Discapacidad</th><th>Horario</th></tr>
+			<th>Presupuestado</th><th>Devengado</th><th>Sexo</th><th>Estado</th><th>Año Ingreso</th>
+			<th>Discapacidad</th><th>Horario</th></tr>
 		</thead>
 		<tbody id="cuerpoFuncionarios">
 			
@@ -58,5 +80,6 @@
 		$('#datatableFuncionarios').dataTable();
 	});
 	</script>
+
 </body>
 </html>
