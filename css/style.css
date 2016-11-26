@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
+.header {
+  width: 100%;
+  height: 4.375rem;
+  background: #34495e;
+  position: relative;
+}
+
+.header__nav {
+  max-width: 60rem;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.header__nav--responsive {
+  display: none;
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header__nav:hover .header__title {
+  left: 0.3125rem;
+}
+
+.header__nav:hover .header__menu {
+  margin-right: 0;
+}
+
+.header__title {
+  color: #2ecc71;
+  margin: 0;
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Josefin Slab", serif;
+  transition: all 400ms ease;
+}
+
+.header__menu {
+  display: flex;
+  margin-right: 1.25rem;
+  transition: all 400ms ease;
+}
+
+.header__item {
+  list-style-type: none;
+  padding: 0.75rem;
+  transition: all 350ms ease;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.header__item:hover {
+  background: #2ecc71;
+}
+
+.header__item:hover a {
+  color: #34495e;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #2ecc71;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header .hamburger {
+  opacity: 1;
+}
+
+.header .hamburger-inner, .header .hamburger-inner:before, .header .hamburger-inner:after {
+  background: #2ecc71;
+}
+
+@media screen and (max-width: 768px) {
+  .header__menu {
+    display: none;
+  }
+  .header__title {
+    top: 0;
+    margin-top: 2.5rem;
+  }
+  .header__nav--responsive {
+    display: block;
+  }
+}

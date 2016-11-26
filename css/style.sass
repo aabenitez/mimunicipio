@@ -1,0 +1,87 @@
+// V A R I A B L E S
+$font__text:     'Montserrat', sans-serif
+$font__title:    'Josefin Slab', serif
+
+$font__size--base: 16 !default
+
+$color__primary: #2ecc71
+$color__secondary: #34495e
+
+// M Ó D U L O S
+@function rem($px, $base: $font__size--base)
+	@return ($px / $base) * 1rem
+
+// F O N T S
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab')
+
+// H E A D E R
+.header
+    width: 100%
+    height: rem(70)
+    background: $color__secondary
+    position: relative
+
+    &__nav
+        max-width: rem(960)
+        margin: auto
+        display: flex
+        justify-content: flex-end
+        position: relative
+
+        &--responsive
+            display: none
+            position: absolute
+            right: rem(10)
+            top: 50%
+            transform: translateY(-50%)
+
+        &:hover
+            .header__title
+                left: rem(5)
+
+            .header__menu
+                margin-right: 0
+
+    &__title
+        color: $color__primary
+        margin: 0
+        position: absolute
+        left: rem(20)
+        top: 50%
+        transform: translateY(-50%)
+        font-family: $font__title
+        transition: all 400ms ease
+
+    &__menu
+        display: flex
+        margin-right: rem(20)
+        transition: all 400ms ease
+
+    &__item
+        list-style-type: none
+        padding: rem(12)
+        transition: all 350ms ease
+        border-radius: rem(4)
+        cursor: pointer
+
+        &:hover
+            background: $color__primary
+
+            a
+                color: $color__secondary
+
+    &__link
+        text-decoration: none
+        color: $color__primary
+        font-family: $font__text
+
+    // hamburguesa
+    .hamburger
+        opacity: 1
+
+        &-inner, &-inner:before, &-inner:after
+            background: $color__primary
+
+// R E S P O N S I V E
+@import responsive
