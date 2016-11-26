@@ -20,6 +20,7 @@
 <script src="js/unslider.js"></script>
 <script src="js/base.js"></script>
 <script src="js/functions.js"></script>
+<script src="datos/funcionarios_10_2016.js"></script>
 
 <body>
     <!-- Header -->
@@ -77,9 +78,18 @@
                 <option>San Lorenzo</option>
                 <option>Lambaré</option>
             </select>
-            <table id="example" class="display" width="100%"></table>
 
         </div>
+        <table id='datatableFuncionarios' width="100%">
+            <thead>
+                <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>Documento</th><th>Nombres</th><th>Apellidos</th>
+                    <th>Presupuestado</th><th>Devengado</th><th>Sexo</th><th>Estado</th><th>Año Ingreso</th>
+                    <th>Discapacidad</th><th>Horario</th></tr>
+                </thead>
+                <tbody id="cuerpoFuncionarios">
+                    
+                </tbody>
+            </table>
     </div>
 </body>
 </html>
