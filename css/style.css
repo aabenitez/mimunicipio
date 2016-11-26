@@ -1,30 +1,45 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-@import url("https://fonts.googleapis.com/css?family=Josefin+Slab");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Josefin Slab";
+  src: url("../fonts/JosefinSlab-Regular.ttf");
+}
+
+:focus {
+  outline: 0;
+}
+
 .header {
   width: 100%;
-  height: 4.375rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  background: rgba(52, 73, 94, 0.9);
+  position: absolute;
+  z-index: 1;
+}
+
+.header-filtro {
+  width: 100%;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
   background: #34495e;
-  position: relative;
 }
 
 .header__nav {
   max-width: 60rem;
   margin: auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
 }
 
-.header__nav--responsive {
-  display: none;
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .header__nav:hover .header__title {
-  left: 0.3125rem;
+  margin-left: 0.3125rem;
 }
 
 .header__nav:hover .header__menu {
@@ -33,17 +48,21 @@
 
 .header__title {
   color: #2ecc71;
-  margin: 0;
-  position: absolute;
-  left: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
+  margin: 0 0 0 1.25rem;
   font-family: "Josefin Slab", serif;
   transition: all 400ms ease;
+  display: inline-block;
+}
+
+.header__title__icon {
+  color: #2ecc71;
+  margin-right: 0.625rem;
+  font-size: 2rem;
 }
 
 .header__menu {
   display: flex;
+  justify-content: center;
   margin-right: 1.25rem;
   transition: all 400ms ease;
 }
@@ -52,8 +71,13 @@
   list-style-type: none;
   padding: 0.75rem;
   transition: all 350ms ease;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  margin-left: 0.3125rem;
   cursor: pointer;
+}
+
+.header__item:first-child {
+  margin-left: 0;
 }
 
 .header__item:hover {
@@ -70,6 +94,14 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.header--responsive__nav {
+  display: none;
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .header .hamburger {
   opacity: 1;
 }
@@ -78,15 +110,42 @@
   background: #2ecc71;
 }
 
+.slider {
+  height: 100vh;
+}
+
+.slider ul li {
+  height: 100vh;
+}
+
+.tabla {
+  margin-top: 2.5rem;
+}
+
+.tabla__wrap {
+  max-width: 60rem;
+  margin: auto;
+}
+
+.tabla__select {
+  border: 0.25rem solid #2ecc71;
+  padding: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+  color: #34495e;
+  background: none;
+  margin-bottom: 1.25rem;
+}
+
+.tabla__select:focus {
+  outline-offset: 0;
+}
+
 @media screen and (max-width: 768px) {
   .header__menu {
     display: none;
+    margin: 0;
   }
-  .header__title {
-    top: 0;
-    margin-top: 2.5rem;
-  }
-  .header__nav--responsive {
+  .header--responsive__nav {
     display: block;
   }
 }

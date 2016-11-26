@@ -9,52 +9,68 @@ $color__secondary: #34495e
 
 // M Ó D U L O S
 @function rem($px, $base: $font__size--base)
-	@return ($px / $base) * 1rem
+    @return ($px / $base) * 1rem
 
 // F O N T S
-@import url('https://fonts.googleapis.com/css?family=Montserrat')
-@import url('https://fonts.googleapis.com/css?family=Josefin+Slab')
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons')
+
+@font-face
+    font-family: "Montserrat"
+    src: url('../fonts/Montserrat-Regular.ttf')
+
+@font-face
+    font-family: "Josefin Slab"
+    src: url('../fonts/JosefinSlab-Regular.ttf')
+
+// G E N E R A L
+:focus
+    outline: 0
 
 // H E A D E R
 .header
     width: 100%
-    height: rem(70)
-    background: $color__secondary
-    position: relative
+    padding-top: rem(5)
+    padding-bottom: rem(5)
+    background: rgba($color__secondary, 0.9)
+    position: absolute
+    z-index: 1
+
+    &-filtro
+        width: 100%
+        padding-top: rem(5)
+        padding-bottom: rem(5)
+        background: $color__secondary
 
     &__nav
         max-width: rem(960)
         margin: auto
         display: flex
-        justify-content: flex-end
+        justify-content: space-between
+        align-items: center
         position: relative
-
-        &--responsive
-            display: none
-            position: absolute
-            right: rem(10)
-            top: 50%
-            transform: translateY(-50%)
 
         &:hover
             .header__title
-                left: rem(5)
+                margin-left: rem(5)
 
             .header__menu
                 margin-right: 0
 
     &__title
         color: $color__primary
-        margin: 0
-        position: absolute
-        left: rem(20)
-        top: 50%
-        transform: translateY(-50%)
+        margin: 0 0 0 rem(20)
         font-family: $font__title
         transition: all 400ms ease
+        display: inline-block
+
+        &__icon
+            color: $color__primary
+            margin-right: rem(10)
+            font-size: rem(32)
 
     &__menu
         display: flex
+        justify-content: center
         margin-right: rem(20)
         transition: all 400ms ease
 
@@ -62,8 +78,12 @@ $color__secondary: #34495e
         list-style-type: none
         padding: rem(12)
         transition: all 350ms ease
-        border-radius: rem(4)
+        border-radius: rem(8)
+        margin-left: rem(5)
         cursor: pointer
+
+        &:first-child
+            margin-left: 0
 
         &:hover
             background: $color__primary
@@ -76,12 +96,48 @@ $color__secondary: #34495e
         color: $color__primary
         font-family: $font__text
 
+    // responsive
+    &--responsive
+        &__nav
+            display: none
+            position: absolute
+            right: rem(10)
+            top: 50%
+            transform: translateY(-50%)
+
     // hamburguesa
     .hamburger
         opacity: 1
 
         &-inner, &-inner:before, &-inner:after
             background: $color__primary
+
+// S L I D E R
+.slider
+	height: 100vh
+
+	ul
+		li
+			height: 100vh
+
+// T A B L A
+.tabla
+    margin-top: rem(40)
+
+    &__wrap
+        max-width: rem(960)
+        margin: auto
+
+    &__select
+        border: rem(4) solid $color__primary
+        padding: rem(8)
+        font-family: $font__text
+        color: $color__secondary
+        background: none
+        margin-bottom: rem(20)
+
+        &:focus
+            outline-offset: 0
 
 // R E S P O N S I V E
 @import responsive
