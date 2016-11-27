@@ -41,5 +41,7 @@ $(document).ready(function(){
     $('#cuerpoFuncionariosDobleRemunerados').append(cuerpoFuncionariosDobleRemunerados);
     $('#funcionariosDobleRemunerados').dataTable();
     $('#todosLosMunicipios').dataTable();
+    $('#comparativaMunicipio').dataTable();
+
 
 });
