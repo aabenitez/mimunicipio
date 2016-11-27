@@ -96,10 +96,6 @@
 
 .header--responsive__nav {
   display: none;
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .header .hamburger {
@@ -162,17 +158,30 @@
   outline-offset: 0;
 }
 
+.open {
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding-top: 0.9375rem;
-    padding-bottom: 0.9375rem;
+    padding-bottom: 0.5rem;
   }
   .header__menu {
     display: none;
     margin: 0;
   }
   .header--responsive__nav {
-    display: block;
+    display: flex;
+    justify-content: center;
+  }
+  .header__nav {
+    display: flex;
+    justify-content: center;
+  }
+  .header__title {
+    text-align: center;
   }
   .slider__mensaje {
     left: 50%;
