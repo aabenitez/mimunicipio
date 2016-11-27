@@ -129,8 +129,8 @@
 .slider__mensaje {
   position: absolute;
   top: 50%;
-  left: 18%;
-  transform: translateY(-50%);
+  left: 35%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
@@ -138,7 +138,6 @@
   font-family: "Josefin Slab", serif;
   color: rgba(255, 255, 255, 0.8);
   font-size: 4rem;
-  transition: all 350ms ease;
 }
 
 .tabla {
@@ -164,11 +163,21 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    padding-top: 0.9375rem;
+    padding-bottom: 0.9375rem;
+  }
   .header__menu {
     display: none;
     margin: 0;
   }
   .header--responsive__nav {
     display: block;
+  }
+  .slider__mensaje {
+    left: 50%;
+  }
+  .slider__mensaje__title {
+    font-size: 3rem;
   }
 }
