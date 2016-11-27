@@ -23,7 +23,7 @@ $color__secondary: #34495e
     src: url('../fonts/JosefinSlab-Regular.ttf')
 
 // G E N E R A L
-:focus
+\:focus
     outline: 0
 
 // H E A D E R
@@ -33,7 +33,7 @@ $color__secondary: #34495e
     padding-bottom: rem(5)
     background: rgba($color__secondary, 0.9)
     position: absolute
-    z-index: 1
+    z-index: 2
 
     &-filtro
         width: 100%
@@ -114,11 +114,31 @@ $color__secondary: #34495e
 
 // S L I D E R
 .slider
-	height: 100vh
+    height: 100vh
 
-	ul
-		li
-			height: 100vh
+    ul
+        li
+            height: 100vh
+
+    &__filtro
+        height: 100%
+        width: 100%
+        position: absolute
+        z-index: 1
+        background: rgba(black, 0.6)
+
+    &__mensaje
+        position: absolute
+        top: 50%
+        left: 18%
+        transform: translateY(-50%)
+        z-index: 2
+
+        &__title
+            font-family: $font__title
+            color: rgba(white, 0.8)
+            font-size: rem(64)
+            transition: all 350ms ease
 
 // T A B L A
 .tabla
