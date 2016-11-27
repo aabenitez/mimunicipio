@@ -34,7 +34,7 @@
                 <ul class="header__menu">
                     <li class="header__item"><a href="index.html" class="header__link">Inicio</a></li>
                     <li class="header__item"><a href="#" class="header__link">Municipios</a></li>
-                    <li class="header__item"><a href="Funcionarios.html" class="header__link">Funcionarios</a></li>
+                    <li class="header__item"><a href="funcionarios.html" class="header__link">Funcionarios</a></li>
                 </ul>
             </section>
         </div>
@@ -80,17 +80,36 @@
                     <option>Lambaré</option>
                     <option selected>Limpio</option>
                 </select>
+                
+                <select class="tabla__select">
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option selected>2016</option>
+                </select>
             </div>
     </section>
         <table id='datatableFuncionarios'>
             <thead>
-                <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>Documento</th><th>Nombres</th><th>Apellidos</th>
-                    <th>Presupuestado</th><th>Devengado</th><th>Sexo</th><th>Estado</th><th>Año Ingreso</th>
-                    <th>Discapacidad</th><th>Horario</th></tr>
+                <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
+                    <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
+                    <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
                 </thead>
                 <tbody id="cuerpoFuncionarios">
                 </tbody>
-            </table>
+        </table>
+        
+        </br></br>
+       
+       <h2>Funcionarios que prestan servicios en otras Oee</h2>
+       <table id='funcionariosDobleRemunerados' width="100%">
+            <thead>
+                <tr><th>C.I.</th><th>Nombres</th><th>Apellidos</th><th>Sexo</th></tr>
+                </thead>
+                <tbody id="cuerpoFuncionariosDobleRemunerados">
+                </tbody>
+        </table>
+        
+
     </div>
 </body>
 </html>
