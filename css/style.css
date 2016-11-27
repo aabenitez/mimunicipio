@@ -9,7 +9,7 @@
   src: url("../fonts/JosefinSlab-Regular.ttf");
 }
 
-:focus {
+\:focus {
   outline: 0;
 }
 
@@ -19,7 +19,7 @@
   padding-bottom: 0.3125rem;
   background: rgba(52, 73, 94, 0.9);
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header-filtro {
@@ -116,6 +116,29 @@
 
 .slider ul li {
   height: 100vh;
+}
+
+.slider__filtro {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.slider__mensaje {
+  position: absolute;
+  top: 50%;
+  left: 18%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.slider__mensaje__title {
+  font-family: "Josefin Slab", serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 4rem;
+  transition: all 350ms ease;
 }
 
 .tabla {
