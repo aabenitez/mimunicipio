@@ -5,10 +5,11 @@ $(document).ready(function(){
 	// HAMBURGUESA
 	$('.hamburger').click(function(){
 		$(this).toggleClass('is-active');
-		$('.header__menu').slideDown(600);
+		$('.header').toggleClass('open');
+		$('.header__menu').show(600);
 
 		if (this.className === "hamburger hamburger--collapse") {
-			$('.header__menu').slideUp(600);
+			$('.header__menu').hide(600);
 		}
 	});
 

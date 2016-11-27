@@ -43,12 +43,14 @@
 
         <!-- Header en Responsive -->
         <div class="header--responsive__nav">
-            <!-- Hamburguesa -->
-            <div class="hamburger hamburger--collapse">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </div>
+            <section class="wow slideInDown" data-wow-duration="1s">
+                <!-- Hamburguesa -->
+                <div class="hamburger hamburger--collapse">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -82,40 +84,38 @@
                     <option>Lambaré</option>
                     <option selected>Limpio</option>
                 </select>
-                
+
                 <select class="tabla__select">
                     <option>2014</option>
                     <option>2015</option>
                     <option selected>2016</option>
                 </select>
-            </div>
-    </section>
-        <table id='datatableFuncionarios'>
-            <thead>
-                <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
-                    <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
-                    <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
-                </thead>
-                <tbody id="cuerpoFuncionarios">
-                </tbody>
-        </table>
-        
-        </br></br>
-       
-       <h2>Funcionarios que prestan servicios en otros Oee</h2>
-       <table id='funcionariosDobleRemunerados' width="100%">
-            <thead>
-                <tr><th>C.I.</th><th>Nombres</th><th>Apellidos</th><th>Sexo</th></tr>
-                </thead>
-                <tbody id="cuerpoFuncionariosDobleRemunerados">
-                </tbody>
-        </table>
-        
-        <img alt="" src="images/dobleRemuneracion.png">
-        <img alt="" src="images/afiliacion.png">
-        <img alt="" src="images/personasConDiscapacidad.png">
-        <img alt="" src="images/hombreMujer.png">
+                </section>
+                <table id='datatableFuncionarios'>
+                    <thead>
+                        <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
+                            <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
+                            <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
+                        </thead>
+                        <tbody id="cuerpoFuncionarios">
+                        </tbody>
+                </table>
 
+           <h1 class="tabla__title">Funcionarios que prestan servicios en otras Oee</h1>
+           <table id='funcionariosDobleRemunerados' width="100%">
+                <thead>
+                    <tr><th>C.I.</th><th>Nombres</th><th>Apellidos</th><th>Sexo</th></tr>
+                    </thead>
+                    <tbody id="cuerpoFuncionariosDobleRemunerados">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="func__charts">
+        <img src="images/dobleRemuneracion.png">
+        <img src="images/afiliacion.png">
+        <img src="images/personasConDiscapacidad.png">
+        <img src="images/hombreMujer.png">
     </div>
 </body>
 </html>

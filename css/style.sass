@@ -100,10 +100,6 @@ $color__secondary: #34495e
     &--responsive
         &__nav
             display: none
-            position: absolute
-            right: rem(10)
-            top: 50%
-            transform: translateY(-50%)
 
     // hamburguesa
     .hamburger
@@ -142,8 +138,12 @@ $color__secondary: #34495e
 .tabla
     margin-top: rem(40)
 
+    &__title
+        font-family: $font__title
+        color: $color__primary
+
     &__wrap
-        max-width: rem(960)
+        width: 80%
         margin: auto
 
     &__select
@@ -156,6 +156,16 @@ $color__secondary: #34495e
 
         &:focus
             outline-offset: 0
+
+// C H A R T S
+.func
+    &__charts
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+
+        img
+            height: 350px
 
 // R E S P O N S I V E
 @import responsive

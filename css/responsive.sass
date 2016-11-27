@@ -1,7 +1,11 @@
+.open
+    width: 100%
+    height: 100%
+
 @media screen and (max-width: 768px)
     .header
         padding-top: rem(15)
-        padding-bottom: rem(15)
+        padding-bottom: rem(8)
 
         &__menu
             display: none
@@ -9,7 +13,15 @@
 
         &--responsive
             &__nav
-                display: block
+                display: flex
+                justify-content: center
+
+        &__nav
+            display: flex
+            justify-content: center
+
+        &__title
+            text-align: center
 
     .slider
         &__mensaje
