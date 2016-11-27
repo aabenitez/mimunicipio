@@ -16,6 +16,8 @@
 <!-- LINK JS -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.responsive.min.js"></script>
+<script src="js/dataTables.buttons.min.js"></script>
 <script src="js/wow.js"></script>
 <script src="js/unslider.js"></script>
 <script src="js/base.js"></script>
@@ -51,7 +53,10 @@
             </div>
         </div>
     </div>
+
     <div class="tabla">
+		</br>
+        <h1 class="tabla__title">Listado de Municipios</h1>
         <table id="todosLosMunicipios">
             <thead>
                 <tr><th>Municipio</th><th>Cantidad Funcionarios</th><th>Hombres</th><th>Mujeres</th><th>Tot. Salario</th><th>Total Per Discapacidad</th><th>Tot. Habitantes</th></tr>
@@ -67,8 +72,7 @@
             </tbody>
         </table>
 
-        </br></br></br>
-        <h1 class="tabla__title">Comparar Municipio</h2>
+        <h1 class="tabla__title">Comparar con otro Municipio</h1>
         <table id="comparativaMunicipio">
             <thead>
                 <tr><th>Municipio</th><th>Cantidad Funcionarios</th><th>Hombres</th><th>Mujeres</th><th>Tot. Salario</th><th>Total Per Discapacidad</th><th>Tot. Habitantes</th></tr>

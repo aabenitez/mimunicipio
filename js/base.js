@@ -26,10 +26,22 @@ $(document).ready(function(){
        	 cuerpo += "<td></td>";
        }else{
        	 cuerpo += "<td>"+funcionarios[m].cargo+"</td>";
-       }
+       }       
    }
     $('#cuerpoFuncionarios').append(cuerpo);
-    $('#datatableFuncionarios').dataTable();
+    $('#datatableFuncionarios').dataTable({
+    	responsive: {
+            details: {
+                type: 'column',
+                target: -1
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   -1
+        } ]
+    });
     
     var cuerpoFuncionariosDobleRemunerados = '';
     for(var k = 100; k <= 500; k=k+100){
@@ -39,9 +51,45 @@ $(document).ready(function(){
         "<td>"+funcionarios[k].sexo+"</td></tr>";
    }
     $('#cuerpoFuncionariosDobleRemunerados').append(cuerpoFuncionariosDobleRemunerados);
-    $('#funcionariosDobleRemunerados').dataTable();
-    $('#todosLosMunicipios').dataTable();
-    $('#comparativaMunicipio').dataTable();
+    $('#funcionariosDobleRemunerados').dataTable({
+    	responsive: {
+            details: {
+                type: 'column',
+                target: -1
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   -1
+        } ]
+    });
+    $('#todosLosMunicipios').dataTable({
+    	responsive: {
+            details: {
+                type: 'column',
+                target: -1
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   -1
+        } ]
+    });
+    $('#comparativaMunicipio').dataTable({
+    	responsive: {
+            details: {
+                type: 'column',
+                target: -1
+            }
+        },
+        columnDefs: [ {
+            className: 'control',
+            orderable: false,
+            targets:   -1
+        } ]
+    });
 
 
 });
