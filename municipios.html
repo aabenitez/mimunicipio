@@ -10,12 +10,14 @@
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+<!--link rel="stylesheet" href="css/bootstrap.css"-->
 <link rel="stylesheet" href="css/unslider.css">
 <link rel="stylesheet" href="css/hamburgers.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- LINK JS -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
+<!--script src="js/bootstrap.js"></script-->
 <script src="js/dataTables.responsive.min.js"></script>
 <script src="js/dataTables.buttons.min.js"></script>
 <script src="js/wow.js"></script>
@@ -53,43 +55,82 @@
             </div>
         </div>
     </div>
+    
+    <script> 
+
+	$(document).ready(function(){
+	
+	var municipios = $.ajax({
+	      url: 'http://localhost/hackathon2016/php/resumenMunicipios.php',
+	      type:'get',
+	      dataType:'json',
+	      async:false  
+	    }).responseText;
+		municipios = JSON.parse(municipios);
+		
+	    var cuerpo = '';
+	    for(var m = 0; m < municipios.length; m++){
+	        cuerpo += "<tr><td>"+municipios[m].oee+"</td>"+
+	        "<td>"+municipios[m].descripcionOee+"</td>"+
+	        "<td>"+municipios[m].cant_funcionarios+"</td>"+
+	        "<td>"+municipios[m].cant_hombres+"</td>"+
+	        "<td>"+municipios[m].cant_mujeres+"</td>"+
+	        "<td>"+municipios[m].cant_pcd+"</td></tr>";
+	  
+	    }
+	    $('#cuerpoMunicipios').append(cuerpo);
+		$('#dataTableMunicipios').DataTable();
+	
+		$('#cuerpoOtroMunicipios').append(cuerpo);
+		$('#dataTableOtroMunicipios').DataTable();
+	});
+
+	</script>
 
     <div class="tabla">
 		</br>
         <div class="tabla__wrap">
             <h1 class="tabla__title">Listado de Municipios</h1>
         </div>
-        <table id="todosLosMunicipios">
-            <thead>
-                <tr><th>Municipio</th><th>Cantidad Funcionarios</th><th>Hombres</th><th>Mujeres</th><th>Tot. Salario</th><th>Total Per Discapacidad</th><th>Tot. Habitantes</th></tr>
-            </thead>
-            <tbody>
-            	<tr><td>Luque</td><td>500</td><td>280</td><td>220</td><td>1.100.000.000 gs</td><td>20</td><td>263.604</td></tr>
-            	<tr><td>Limpio</td><td>280</td><td>130</td><td>150</td><td>700.000.000 gs</td><td>5</td><td>90.000</td></tr>
-            	<tr><td>Aregua</td><td>120</td><td>70</td><td>50</td><td>300.000.000 gs</td><td>2</td><td>70.000</td></tr>
-            	<tr><td>Capiata</td><td>350</td><td>190</td><td>160</td><td>800.000.000 gs</td><td>7</td><td>224.152</td></tr>
-            	<tr><td>Fernando de la Mora</td><td>600</td><td>400</td><td>200</td><td>2.000.000.000 gs</td><td>15</td><td>114.332</td></tr>
- 				<tr><td>Lambaré</td><td>250</td><td>150</td><td>100</td><td>500.000.000 gs</td><td>8</td><td>119.984</td></tr>
- 				<tr><td>Ñemby</td><td>150</td><td>70</td><td>80</td><td>420.000.000 gs</td><td>5</td><td>126.817</td></tr>
-            </tbody>
-        </table>
-        <div class="tabla__wrap">
-            <h1 class="tabla__title">Comparar con otro Municipio</h1>
-        </div>
-        <table id="comparativaMunicipio">
-            <thead>
-                <tr><th>Municipio</th><th>Cantidad Funcionarios</th><th>Hombres</th><th>Mujeres</th><th>Tot. Salario</th><th>Total Per Discapacidad</th><th>Tot. Habitantes</th></tr>
-            </thead>
-            <tbody>
-            	<tr><td>Luque</td><td>500</td><td>280</td><td>220</td><td>1.100.000.000 gs</td><td>20</td><td>263.604</td></tr>
-            	<tr><td>Limpio</td><td>280</td><td>130</td><td>150</td><td>700.000.000 gs</td><td>5</td><td>90.000</td></tr>
-            	<tr><td>Aregua</td><td>120</td><td>70</td><td>50</td><td>300.000.000 gs</td><td>2</td><td>70.000</td></tr>
-            	<tr><td>Capiata</td><td>350</td><td>190</td><td>160</td><td>800.000.000 gs</td><td>7</td><td>224.152</td></tr>
-            	<tr><td>Fernando de la Mora</td><td>600</td><td>400</td><td>200</td><td>2.000.000.000 gs</td><td>15</td><td>114.332</td></tr>
- 				<tr><td>Lambaré</td><td>250</td><td>150</td><td>100</td><td>500.000.000 gs</td><td>8</td><td>119.984</td></tr>
- 				<tr><td>Ñemby</td><td>150</td><td>70</td><td>80</td><td>420.000.000 gs</td><td>5</td><td>126.817</td></tr>
-            </tbody>
-        </table>
+        <div class="panel panel-success"> 
+		<div class="panel-heading">Comparar Municipios</div>
+		<div class="panel-body">
+		
+			<div class="row">
+				<div class="col-md-12">
+					
+					<div class="table-responsive">
+						<table id="dataTableMunicipios" class="table-responsive table table-hover table-bordered">
+						<thead>
+							<tr><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
+                        </thead>
+                        <tbody id="cuerpoMunicipios">
+                        </tbody>
+					</table>
+					</div>
+	
+				</div>
+			</div>
+			</br>
+			<div class="row">
+				<div class="col-md-12">
+					
+					<div class="table-responsive">
+						<table id="dataTableOtroMunicipios" class="table-responsive table table-hover table-bordered">
+						<thead>
+							<tr><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
+                        </thead>
+                        <tbody id="cuerpoOtroMunicipios">
+                        </tbody>
+					</table>
+					</div>
+	
+				</div>
+			</div>						
+			
+		</div>
+		<div class="panel-footer"></div>
+	</div>
 
     </div>
 </body>
