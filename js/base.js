@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	
+	var funcionarios = $.ajax({
+		  url: 'http://localhost/hackathon2016/php/funcionarios.php',
+	      type:'get',
+	      dataType:'json',
+	      async:false  
+	    }).responseText;
+		funcionarios = JSON.parse(funcionarios);
 
     var cuerpo = '';
     for(var m = 0; m < funcionarios.length; m++){
@@ -16,10 +24,8 @@ $(document).ready(function(){
         "<td>"+funcionarios[m].discapacidad+"</td>";
         if(funcionarios[m].cargaHoraria == null){
         	 cuerpo += "<td></td>";
-
         }else{
         	 cuerpo += "<td>"+funcionarios[m].cargaHoraria+"</td>";
-
         }
         cuerpo += "<td>"+funcionarios[m].objetoGasto+" - "+funcionarios[m].concepto+"</td>";
         if(funcionarios[m].cargo == null){
@@ -27,21 +33,9 @@ $(document).ready(function(){
        }else{
        	 cuerpo += "<td>"+funcionarios[m].cargo+"</td>";
        }       
-   }
+    }
     $('#cuerpoFuncionarios').append(cuerpo);
-    $('#datatableFuncionarios').dataTable({
-    	responsive: {
-            details: {
-                type: 'column',
-                target: -1
-            }
-        },
-        columnDefs: [ {
-            className: 'control',
-            orderable: false,
-            targets:   -1
-        } ]
-    });
+    $('#datatableFuncionarios').dataTable();
     
     var cuerpoFuncionariosDobleRemunerados = '';
     for(var k = 100; k <= 500; k=k+100){
@@ -49,47 +43,9 @@ $(document).ready(function(){
     	"<td>"+funcionarios[k].nombres+"</td>"+
         "<td>"+funcionarios[k].apellidos+"</td>"+
         "<td>"+funcionarios[k].sexo+"</td></tr>";
-   }
+    }
+    
     $('#cuerpoFuncionariosDobleRemunerados').append(cuerpoFuncionariosDobleRemunerados);
-    $('#funcionariosDobleRemunerados').dataTable({
-    	responsive: {
-            details: {
-                type: 'column',
-                target: -1
-            }
-        },
-        columnDefs: [ {
-            className: 'control',
-            orderable: false,
-            targets:   -1
-        } ]
-    });
-    $('#todosLosMunicipios').dataTable({
-    	responsive: {
-            details: {
-                type: 'column',
-                target: -1
-            }
-        },
-        columnDefs: [ {
-            className: 'control',
-            orderable: false,
-            targets:   -1
-        } ]
-    });
-    $('#comparativaMunicipio').dataTable({
-    	responsive: {
-            details: {
-                type: 'column',
-                target: -1
-            }
-        },
-        columnDefs: [ {
-            className: 'control',
-            orderable: false,
-            targets:   -1
-        } ]
-    });
-
+    $('#funcionariosDobleRemunerados').dataTable();    
 
 });
