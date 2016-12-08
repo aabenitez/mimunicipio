@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/unslider.css">
 <link rel="stylesheet" href="css/hamburgers.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/icono_municipio.png" />
 <!-- LINK JS -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
@@ -22,7 +23,6 @@
 <script src="js/unslider.js"></script>
 <script src="js/base.js"></script>
 <script src="js/functions.js"></script>
-<script src="datos/funcionarios_10_2016.js"></script>
 
 <body>
     <!-- Header -->
@@ -92,29 +92,29 @@
                     <option>2015</option>
                     <option selected>2016</option>
                 </select>
-                </section>
-                <table id='datatableFuncionarios'>
-                    <thead>
-                        <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
-                            <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
-                            <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
-                        </thead>
-                        <tbody id="cuerpoFuncionarios">
-                        </tbody>
-                </table>
-            <div class="tabla__wrap">
-                <h1 class="tabla__title">Funcionarios que prestan servicios en otros Oee</h1>
-            </div>
-           <table id='funcionariosDobleRemunerados' width="100%">
-                <thead>
-                    <tr><th>C.I.</th><th>Nombres</th><th>Apellidos</th><th>Sexo</th></tr>
-                    </thead>
-                    <tbody id="cuerpoFuncionariosDobleRemunerados">
-                    </tbody>
-            </table>
-        </div>
-    </div>
+    		</div>
+    	</div>
+	</section>
+    <table id='datatableFuncionarios'>
+        <thead>
+            <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
+                <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
+                <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
+            </thead>
+            <tbody id="cuerpoFuncionarios">
+            </tbody>
+    </table>
     <div class="tabla__wrap">
+        <h1 class="tabla__title">Funcionarios que prestan servicios en otros Oee</h1>
+    </div>
+    <table id='funcionariosDobleRemunerados' width="100%">
+         <thead>
+             <tr><th>C.I.</th><th>Nombres</th><th>Apellidos</th><th>Sexo</th></tr>
+             </thead>
+             <tbody id="cuerpoFuncionariosDobleRemunerados">
+             </tbody>
+     </table>
+    <!-- div class="tabla__wrap">
         <h1 class="tabla__title">Gráficos</h1>
     </div>
     <div class="func__charts">
@@ -122,6 +122,6 @@
         <img src="images/afiliacion.png">
         <img src="images/personasConDiscapacidad.png">
         <img src="images/hombreMujer.png">
-    </div>
+    </div-->
 </body>
 </html>
