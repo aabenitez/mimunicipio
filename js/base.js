@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	var funcionarios = $.ajax({
-		  url: 'http://localhost/hackathon2016/php/funcionarios.php',
+		  url: '/hackathon2016/php/funcionarios.php',
 	      type:'get',
 	      dataType:'json',
 	      async:false  
