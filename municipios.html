@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mi Municipio - Datos sobre los municipios</title>
+    <title>Mi Municipio - Datos sobre municipios</title>
 </head>
 <!-- LINK CSS -->
 <link rel="stylesheet" href="css/normalize.css">
@@ -70,12 +70,12 @@
 		
 	    var cuerpo = '';
 	    for(var m = 0; m < municipios.length; m++){
-	        cuerpo += "<tr><td>"+municipios[m].oee+"</td>"+
+	        cuerpo += "<tr><td class='dt-body-center'>"+municipios[m].oee+"</td>"+
 	        "<td>"+municipios[m].descripcionOee+"</td>"+
-	        "<td>"+municipios[m].cant_funcionarios+"</td>"+
-	        "<td>"+municipios[m].cant_hombres+"</td>"+
-	        "<td>"+municipios[m].cant_mujeres+"</td>"+
-	        "<td>"+municipios[m].cant_pcd+"</td></tr>";
+	        "<td class='dt-body-right'>"+municipios[m].cant_funcionarios+"</td>"+
+	        "<td class='dt-body-right'>"+municipios[m].cant_hombres+"</td>"+
+	        "<td class='dt-body-right'>"+municipios[m].cant_mujeres+"</td>"+
+	        "<td class='dt-body-right'>"+municipios[m].cant_pcd+"</td></tr>";
 	  
 	    }
 	    $('#cuerpoMunicipios').append(cuerpo);
