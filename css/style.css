@@ -38,7 +38,7 @@
 }
 
 .header__nav {
-  max-width: 60rem;
+  max-width: 80rem;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -155,7 +155,7 @@
 
 .tabla__wrap {
   width: 90%;
-  margin: auto;
+  margin: 2rem;
 }
 
 .tabla__select {

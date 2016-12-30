@@ -47,15 +47,15 @@ $(document).ready(function(){
 //    }
     );
     
-    var cuerpoFuncionariosDobleRemunerados = '';
-    for(var k = 100; k <= 500; k=k+100){
-    	cuerpoFuncionariosDobleRemunerados += "<tr><td>"+funcionarios[k].documento+"</td>"+
-    	"<td>"+funcionarios[k].nombres+"</td>"+
-        "<td>"+funcionarios[k].apellidos+"</td>"+
-        "<td>"+funcionarios[k].sexo+"</td></tr>";
-    }
-    
-    $('#cuerpoFuncionariosDobleRemunerados').append(cuerpoFuncionariosDobleRemunerados);
-    $('#funcionariosDobleRemunerados').dataTable();    
+//    var cuerpoFuncionariosDobleRemunerados = '';
+//    for(var k = 100; k <= 500; k=k+100){
+//    	cuerpoFuncionariosDobleRemunerados += "<tr><td>"+funcionarios[k].documento+"</td>"+
+//    	"<td>"+funcionarios[k].nombres+"</td>"+
+//        "<td>"+funcionarios[k].apellidos+"</td>"+
+//        "<td>"+funcionarios[k].sexo+"</td></tr>";
+//    }
+//    
+//    $('#cuerpoFuncionariosDobleRemunerados').append(cuerpoFuncionariosDobleRemunerados);
+//    $('#funcionariosDobleRemunerados').dataTable();    
 
 });

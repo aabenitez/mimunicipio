@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/hamburgers.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- LINK JS -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
@@ -58,10 +59,10 @@
     </div>
     
     <script> 
-
 	$(document).ready(function(){
 	
-	var municipios = $.ajax({
+		//Petición Ajax que obtiene la lista de municipios y sus datos resumidos.
+		var municipios = $.ajax({
 	      url: '/hackathon2016/php/resumenMunicipios.php',
 	      type:'get',
 	      dataType:'json',
@@ -69,32 +70,74 @@
 	    }).responseText;
 		municipios = JSON.parse(municipios);
 		
+		//se cargan los datos fila por fila.
 	    var cuerpo = '';
 	    for(var m = 0; m < municipios.length; m++){
-	        cuerpo += "<tr><td class='dt-body-center'>"+municipios[m].oee+"</td>"+
+	        cuerpo += "<tr id='fila-"+m+"' >"+
+	        "<td><button id='img-"+m+"' class='agregar-municipio fa fa-plus' "+
+	        	"data-toggle='tooltip' title='Agregar a la lista de comparación' style='color:green;' /></td>"+
+	        "<td class='dt-body-center'>"+municipios[m].oee+"</td>"+
 	        "<td>"+municipios[m].descripcionOee+"</td>"+
 	        "<td class='dt-body-right'>"+municipios[m].cant_funcionarios+"</td>"+
 	        "<td class='dt-body-right'>"+municipios[m].cant_hombres+"</td>"+
 	        "<td class='dt-body-right'>"+municipios[m].cant_mujeres+"</td>"+
-	        "<td class='dt-body-right'>"+municipios[m].cant_pcd+"</td></tr>";
-	  
-	    }
+	        "<td class='dt-body-right'>"+municipios[m].cant_pcd+"</td></tr>";	  
+	    }	    
 	    $('#cuerpoMunicipios').append(cuerpo);
 		$('#dataTableMunicipios').DataTable();
 	
-		$('#cuerpoOtroMunicipios').append(cuerpo);
-		$('#dataTableOtroMunicipios').DataTable();
+		
+		//Funcionalidad que agrega un municipio a la lista de comparación
+		$('.agregar-municipio').on( 'click', function () {
+			  var imgId = this.id.split("-");			  	  
+			  var rowId = imgId[1];
+			  
+			  var tablaMunicipios = $('#dataTableMunicipios').DataTable();
+			  
+			  var rowData = tablaMunicipios.row( '#fila-'+rowId ).data();
+			  rowData[0] = "<button id='img-"+rowId+"' class='quitar-municipio fa fa-minus' "+
+	        	"data-toggle='tooltip' title='Quitar de la lista de comparación' style='color:green;' />";
+			  
+			  //prepara el row a ser insertado
+			  var fila = '<tr id="fila-'+rowId+'" >';
+			  
+			  //agrega las columas al row que será insertado en la tablaCompararMunicipios
+			  for(var i = 0; i < rowData.length; i++){
+				  fila += "<td>" + rowData[i] + "</td>";
+			  }
+			  fila += "</tr>";//cierra el row
+			  
+			  $('#cuerpoOtroMunicipios').append(fila);
+			  $('#dataTableOtroMunicipios').DataTable();
+			  
+			  //Funcionalidad que quita un municipio de la lista de comparación
+			  $('.quitar-municipio').on( 'click', function () {
+					var imgId = this.id.split("-");			  	  
+					var rowId = imgId[1];
+					
+					$('#dataTableOtroMunicipios').find("#fila-"+rowId).remove();			
+			  });
+		});
+		
+		/* //Funcionalidad que quita un municipio de la lista de comparación
+		$('.quitar-municipio').on( 'click', function () {
+			var imgId = this.id.split("-");			  	  
+			var rowId = imgId[1];
+			
+			$('#dataTableOtroMunicipios').find("#fila-"+rowId).remove();			
+		}); */
+		
 	});
 
 	</script>
 
     <div class="tabla">
-		</br>
+		<br/>
         <div class="tabla__wrap">
             <h1 class="tabla__title">Listado de Municipios</h1>
         </div>
         <div class="panel panel-success"> 
-		<div class="panel-heading">Comparar Municipios</div>
+		<!-- div class="panel-heading">Comparar Municipios</div-->
 		<div class="panel-body">
 		
 			<div class="row">
@@ -103,7 +146,7 @@
 					<div class="table-responsive">
 						<table id="dataTableMunicipios" class="table-responsive table table-hover table-bordered">
 						<thead>
-							<tr><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
+					 		<tr><th></th><th>Id</th><th>Nombre de la Oee</th><th>Total de Funcionarios</th><th>Total de Hombres</th><th>Total de Mujeres</th><th>Total de PcD</th></tr>
                         </thead>
                         <tbody id="cuerpoMunicipios">
                         </tbody>
@@ -112,14 +155,17 @@
 	
 				</div>
 			</div>
-			</br>
+			<br/>
+			<div>
+				<h1 class="tabla__title">Comparar Municipios</h1>
+			</div>
 			<div class="row">
 				<div class="col-md-12">
 					
 					<div class="table-responsive">
 						<table id="dataTableOtroMunicipios" class="table-responsive table table-hover table-bordered">
 						<thead>
-							<tr><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
+							<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
                         </thead>
                         <tbody id="cuerpoOtroMunicipios">
                         </tbody>
