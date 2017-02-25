@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>Mi Municipio - Mapa de municipios</title>
-</head>
-<!-- LINK CSS -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="css/unslider.css">
-<link rel="stylesheet" href="css/hamburgers.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" type="image/png" href="images/favicon.png" />
-<!-- LINK JS -->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.responsive.min.js"></script>
-<script src="js/dataTables.buttons.min.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/unslider.js"></script>
-<script src="js/base.js"></script>
-<script src="js/functions.js"></script>
 
+	<!-- LINK CSS -->
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="css/unslider.css">
+	<link rel="stylesheet" href="css/hamburgers.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+	<!-- Sección de Leaflet CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	
+	<!-- LINK JS -->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.responsive.min.js"></script>
+	<script src="js/dataTables.buttons.min.js"></script>
+	<script src="js/wow.js"></script>
+	<script src="js/unslider.js"></script>
+	<script src="js/functions.js"></script>
+	<!-- Sección de Leaflet JS -->
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<!-- Sección de geoJSON municipios -->
+	<script src="mapa/municipios2002.geojson" type="text/javascript"></script>
+	
+	<script>
+		
+	</script>
+		
+</head>
 <body>
     <!-- Header -->
     <div class="header-filtro">
@@ -54,7 +66,42 @@
             </div>
         </div>
     </div>
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d460668.1680673535!2d-57.64887924996895!3d-25.572662742103585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945c518692ce3cf9%3A0x54cca6fa70180040!2sDepartamento+Central!5e0!3m2!1ses-419!2spy!4v1480273046999" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+	<div id="map"></div>
+	
+	
+<script type="text/javascript">
+	
+	/* var desPaisDeptojson = $.ajax({
+    	url:'http://spr.stp.gov.py/tablero/ajaxSelects?action=getDesempPaisPorDepto',
+      	type:'get',
+      	dataType:'json',
+      	crossDomain:true,
+      	async:false       
+    }).responseText;
+	var desPaisDepto=JSON.parse(desPaisDeptojson);*/
+	
+	
+	//Creacion y vizualizacion del leaflet	
+	function style(feature) {
+		return {
+			fillColor: 'green', 
+	        weight: 2,
+	        opacity: 0.6,
+	        color: 'white',
+	        dashArray: '3',
+	        fillOpacity: 0.6
+	    };						    
+	}
+	
+	//L.control.scale().addTo(map);
+	
+	var map = L.map('map').setView([-24.5, -57], 6);
+	
+	var municipios = new L.geoJson(municipioGeojson,{style:style});
+	municipios.addTo(map);
+	
+</script>
 
 </body>
 </html>
