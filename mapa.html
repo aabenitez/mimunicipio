@@ -30,7 +30,7 @@
 	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 	<!-- Sección de geoJSON municipios -->
 	<script src="mapa/municipios2002.geojson" type="text/javascript"></script>
-	
+	<script src="mapa/pos_municipios_28_02_2017.json" type="text/javascript"></script>
 	<script>
 		
 	</script>
@@ -72,15 +72,15 @@
 	
 <script type="text/javascript">
 	
-	/* var desPaisDeptojson = $.ajax({
-    	url:'http://spr.stp.gov.py/tablero/ajaxSelects?action=getDesempPaisPorDepto',
+	//var posMunicipiosPyJson = pos_muni_py;
+		/* $.ajax({
+    	url:'http://mapas.paraguay.gov.py/rest/instituciones/mapa?tipoInstitucion=5&id_institucion=0',
       	type:'get',
       	dataType:'json',
       	crossDomain:true,
       	async:false       
-    }).responseText;
-	var desPaisDepto=JSON.parse(desPaisDeptojson);*/
-	
+    }).responseText;*/	 
+	var posMuniPY = pos_muni_py; //JSON.parse(pos_muni_py);	
 	
 	//Creacion y vizualizacion del leaflet	
 	function style(feature) {
@@ -94,12 +94,23 @@
 	    };						    
 	}
 	
-	//L.control.scale().addTo(map);
-	
 	var map = L.map('map').setView([-24.5, -57], 6);
 	
 	var municipios = new L.geoJson(municipioGeojson,{style:style});
 	municipios.addTo(map);
+	
+	
+	// Config. y Despliegue de iconos en el mapa.	
+	var myIcon = L.icon({
+	    iconUrl: 'images/favicon.png'/*,
+	    iconSize: [38, 95],
+	    iconAnchor: [22, 94],
+	    popupAnchor: [-3, -76]*/
+	});
+
+	for (i = 0; i < posMuniPY.length; i++){
+		L.marker([posMuniPY[i].latitud, posMuniPY[i].longitud], {icon: myIcon}).addTo(map);	
+	}
 	
 </script>
 
