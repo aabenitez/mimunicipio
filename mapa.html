@@ -108,10 +108,13 @@
 	    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 	        layer.bringToFront();
 	    }
+	    
+	    info.update(layer.feature.properties);
 	}
 	
 	function resetHighlight(e) {
 		municipios.resetStyle(e.target);
+		info.update();
 	}
 	
 	function zoomToFeature(e) {
@@ -146,6 +149,25 @@
 	for (i = 0; i < posMuniPY.length; i++){
 		L.marker([posMuniPY[i].latitud, posMuniPY[i].longitud], {icon: myIcon}).addTo(map);	
 	}
+	
+	
+	//sección de la caja de mensaje en el mapa.
+	var info = L.control();
+
+	info.onAdd = function (map) {
+	    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+	    this.update();
+	    return this._div;
+	};
+
+	// method that we will use to update the control based on feature properties passed
+	info.update = function (props) {
+	    this._div.innerHTML = '<h4>Municipo: </h4>' +  (props ?
+	        '<b>' + props.distrito + '</b>' //'<br />' + props.density + ' people / mi<sup>2</sup>'
+	        : 'Pon el cursor sobre un municipio <br /> para ver más info...');
+	};
+
+	info.addTo(map);
 	
 </script>
 
