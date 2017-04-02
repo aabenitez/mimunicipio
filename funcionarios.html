@@ -99,11 +99,18 @@
         <thead>
             <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
                 <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
-                <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th></tr>
-            </thead>
-            <tbody id="cuerpoFuncionarios">
-            </tbody>
-    </table>
+                <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th><th>Función</th></tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
+                <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
+                <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th><th>Función</th>
+            </tr>
+        </tfoot>
+
+    </table>   
+    
     
     <!--div class="tabla__wrap">
         <h1 class="tabla__title">Funcionarios que prestan servicios en otros Oee</h1>
@@ -126,47 +133,83 @@
     </div-->
     
     <script type="text/javascript">
-	    function numeroEntero(numero){
-			return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-		}
+    	$(document).ready(function() {	    
+		    /* function numeroEntero(numero){
+				return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			}
+			
+			var funcionarios = $.ajax({
+				  url: '/php/funcionarios.php',
+			      type:'get',
+			      dataType:'json',
+			      async:false  
+			    }).responseText;
+				funcionarios = JSON.parse(funcionarios);
 		
-		var funcionarios = $.ajax({
-			  url: '/php/funcionarios.php',
-		      type:'get',
-		      dataType:'json',
-		      async:false  
-		    }).responseText;
-			funcionarios = JSON.parse(funcionarios);
-	
-	    var cuerpo = '';
-	    for(var m = 0; m < funcionarios.length; m++){
-	        cuerpo += "<tr><td class='dt-body-center'>"+funcionarios[m].anho+"</td>"+
-	        "<td class='dt-body-center'>"+funcionarios[m].mes+"</td>"+
-	        "<td>"+funcionarios[m].descripcionOee+"</td>"+
-	        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].documento)+"</td>"+
-	        "<td>"+funcionarios[m].nombres+"</td>"+
-	        "<td>"+funcionarios[m].apellidos+"</td>"+
-	        "<td class='dt-body-center'>"+funcionarios[m].sexo+"</td>"+
-	        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].presupuestado)+"</td>"+        
-	        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].devengado)+"</td>"+        
-	        "<td class='dt-body-center'>"+funcionarios[m].estado+"</td>"+
-	        "<td class='dt-body-right'>"+funcionarios[m].anhoIngreso+"</td>"+
-	        "<td class='dt-body-center'>"+funcionarios[m].discapacidad+"</td>";
-	        if(funcionarios[m].cargaHoraria == null){
-	        	 cuerpo += "<td></td>";
-	        }else{
-	        	 cuerpo += "<td>"+funcionarios[m].cargaHoraria+"</td>";
-	        }
-	        cuerpo += "<td>"+funcionarios[m].objetoGasto+" - "+funcionarios[m].concepto+"</td>";
-	        if(funcionarios[m].cargo == null){
-	       	 cuerpo += "<td></td>";
-	       }else{
-	       	 cuerpo += "<td>"+funcionarios[m].cargo+"</td>";
-	       }       
-	    }
-	    $('#cuerpoFuncionarios').append(cuerpo);
-	    $('#datatableFuncionarios').dataTable();
-    
+		    var cuerpo = '';
+		    for(var m = 0; m < funcionarios.length; m++){
+		        cuerpo += "<tr><td class='dt-body-center'>"+funcionarios[m].anho+"</td>"+
+		        "<td class='dt-body-center'>"+funcionarios[m].mes+"</td>"+
+		        "<td>"+funcionarios[m].descripcionOee+"</td>"+
+		        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].documento)+"</td>"+
+		        "<td>"+funcionarios[m].nombres+"</td>"+
+		        "<td>"+funcionarios[m].apellidos+"</td>"+
+		        "<td class='dt-body-center'>"+funcionarios[m].sexo+"</td>"+
+		        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].presupuestado)+"</td>"+        
+		        "<td class='dt-body-right'>"+numeroEntero(funcionarios[m].devengado)+"</td>"+        
+		        "<td class='dt-body-center'>"+funcionarios[m].estado+"</td>"+
+		        "<td class='dt-body-right'>"+funcionarios[m].anhoIngreso+"</td>"+
+		        "<td class='dt-body-center'>"+funcionarios[m].discapacidad+"</td>";
+		        if(funcionarios[m].cargaHoraria == null){
+		        	 cuerpo += "<td></td>";
+		        }else{
+		        	 cuerpo += "<td>"+funcionarios[m].cargaHoraria+"</td>";
+		        }
+		        cuerpo += "<td>"+funcionarios[m].objetoGasto+" - "+funcionarios[m].concepto+"</td>";
+		        if(funcionarios[m].cargo == null){
+		       	     cuerpo += "<td></td></tr>";
+		        }else{
+		       	      cuerpo += "<td>"+funcionarios[m].cargo+"</td></tr>";
+		        }       
+		    }
+		    $('#cuerpoFuncionarios').append(cuerpo); */
+		    
+		    
+		    
+			// Setup - add a text input to each footer cell
+    	    $('#datatableFuncionarios tfoot th').each( function () {
+    	        var title = $(this).text();
+    	        $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
+    	    });  	   
+    	    
+		   // var table = $('#datatableFuncionarios').DataTable();
+		    var table = $('#datatableFuncionarios').DataTable({
+		         "bProcessing": true,
+		         "serverSide": true,
+		         "ajax":{
+		            url :"/php/funcionarios.php", // json datasource
+		            type: "post",  // type of method  , by default would be get
+		            error: function(){  // error handling code
+		              $("#datatableFuncionarios_processing").css("display","none");
+		            }
+		          }
+		        });   
+		    
+		   // Apply the search
+    	    table.columns().every( function () {
+    	        var that = this;
+    	 
+    	        $( 'input', this.footer() ).on( 'keyup change', function () {
+    	            if ( that.search() !== this.value ) {
+    	                that
+    	                    .search( this.value )
+    	                    .draw();
+    	            }
+    	        } );
+    	    });
+		     	   
+		 
+    	});
     </script>
 </body>
 </html>
