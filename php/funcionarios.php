@@ -1,55 +1,107 @@
 
 <?php
-$sql = "SELECT * FROM funcionarios"; 
-function connectDB(){
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $bd = "mimunicipio";
+	//include connection file 
+	include_once("connection.php");
+	 
+	// initilize all variable
+	$params = $columns = $totalRecords = $data = array();
 
-$conexion = mysqli_connect($server, $user, $pass,$bd);
+	$params = $_REQUEST;
 
-    if($conexion){
-        //echo 'La conexion de la base de datos se ha hecho satisfactoriamente';
-        }else{
-            echo 'Ha sucedido un error inexperado en la conexion de la base de datos';
-        }
-return $conexion;
-}
-function disconnectDB($conexion){
-$close = mysqli_close($conexion);
+	//define index of column
+	$columns = array( 
+		0 =>'anho',
+		1 =>'mes', 
+		2 => 'descripcionOee',
+		3 => 'documento',
+		4 => 'nombres',
+		5 => 'apellidos',
+		6 => 'sexo',
+		7 => 'presupuestado',
+		8 => 'devengado',
+		9 => 'estado',
+		10 => 'anhoIngreso',
+		11 => 'discapacidad',
+		12 => 'cargaHoraria',
+		13 => 'objetoGasto',
+		14 => 'cargo',
+		15 => 'funcion'	
+		
+	);
 
-    if($close){
-       // echo 'La desconexion de la base de datos se ha hecho satisfactoriamente';
-        }else{
-            echo 'Ha sucedido un error inexperado en la desconexion de la base de datos';
-        }   
-return $close;
-}
-function getArraySQL($sql){
-    //Creamos la conexión con la función anterior
-    $conexion = connectDB();
-//generamos la consulta
+	$where = $sqlTot = $sqlRec = "";
 
-    mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
+	// check search value exist
+	if( !empty($params['search']['value']) ) {   
+		$where .=" WHERE ";
+		$where .=" ( anho LIKE '".$params['search']['value']."%' ";    
+		$where .=" OR mes LIKE '".$params['search']['value']."%' ";
 
-if(!$result = mysqli_query($conexion, $sql)) die(); //si la conexión cancelar programa
+		$where .=" OR descripcionOee LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR documento LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR nombres LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR apellidos LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR sexo LIKE '".$params['search']['value']."%' ";
+		$where .=" OR presupuestado LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR devengado LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR estado LIKE '".$params['search']['value']."%' ";
+		$where .=" OR anhoIngreso LIKE '".$params['search']['value']."%' ";
+		$where .=" OR discapacidad LIKE '".$params['search']['value']."%' ";
+		$where .=" OR cargaHoraria LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR objetoGasto LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR cargo LIKE '%".$params['search']['value']."%' ";
+		$where .=" OR funcion LIKE '%".$params['search']['value']."%' )";		
+	}
 
-$rawdata = array(); //creamos un array
+	// getting total number records without any search
+	$sql = "SELECT  anho,
+					mes, 
+					descripcionOee,
+					documento,
+					nombres,
+					apellidos,
+					sexo,
+					presupuestado,
+					devengado,
+					estado,
+					anhoIngreso,
+					discapacidad,
+					cargaHoraria,
+					objetoGasto,
+					cargo,
+					funcion	 
+			FROM `funcionarios` ";
+	$sqlTot .= $sql;
+	$sqlRec .= $sql;
+	//concatenate search sql if value exist
+	if(isset($where) && $where != '') {
 
-//guardamos en un array multidimensional todos los datos de la consulta
-$i=0;
+		$sqlTot .= $where;
+		$sqlRec .= $where;
+	}
 
-while($row = mysqli_fetch_array($result))
-{
-    $rawdata[$i] = $row;
-    $i++;
-}
 
-disconnectDB($conexion); //desconectamos la base de datos
+ 	$sqlRec .=  " ORDER BY ". $columns[$params['order'][0]['column']]."   ".$params['order'][0]['dir']."  LIMIT ".$params['start']." ,".$params['length']." ";
 
-return $rawdata; //devolvemos el array
-}
-    $myArray = getArraySQL($sql);
-    echo json_encode($myArray);
+	$queryTot = mysqli_query($conn, $sqlTot) or die("database error:". mysqli_error($conn));
+
+
+	$totalRecords = mysqli_num_rows($queryTot);
+
+	$queryRecords = mysqli_query($conn, $sqlRec) or die("error to fetch employees data");
+
+	//iterate on results row and create new index array of data
+	while( $row = mysqli_fetch_row($queryRecords) ) { 
+		$data[] = $row;
+	}	
+
+	$json_data = array(
+			"draw"            => intval( $params['draw'] ),   
+			"recordsTotal"    => intval( $totalRecords ),  
+			"recordsFiltered" => intval($totalRecords),
+			"data"            => $data   // total data array
+			);
+
+	echo json_encode($json_data);  // send data as json format
 ?>
+	
