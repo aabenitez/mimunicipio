@@ -59,7 +59,7 @@
     <section class="wow slideInLeft" data-wow-duration="1s">
         <div class="tabla">
             <div class="tabla__wrap">
-                <select class="tabla__select">
+                <!--select class="tabla__select">
                     <option>Concepción</option>
                     <option>San Pedro</option>
                     <option>Cordillera</option>
@@ -91,23 +91,23 @@
                     <option>2014</option>
                     <option>2015</option>
                     <option selected>2016</option>
-                </select>
-    		</div>
+                </select -->
+    	   </div>
     	</div>
-	</section>
+    </section>
     <table id='datatableFuncionarios'>
         <thead>
             <tr><th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
                 <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
                 <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th><th>Función</th></tr>
         </thead>
-        <tfoot>
+        <!-- tfoot>
             <tr>
                 <th>Año</th><th>Mes</th><th>Municipio</th><th>C.I.</th><th>Nombres</th><th>Apellidos</th>
                 <th>Sexo</th><th>Presupuestado</th><th>Devengado</th><th>Estado</th><th>Año Ingreso</th>
                 <th>PcD</th><th>Horario</th><th>Objeto Gasto</th><th>Cargo</th><th>Función</th>
             </tr>
-        </tfoot>
+        </tfoot -->
 
     </table>   
     
@@ -177,10 +177,10 @@
 		    
 		    
 			// Setup - add a text input to each footer cell
-    	    $('#datatableFuncionarios tfoot th').each( function () {
+    	    /* $('#datatableFuncionarios tfoot th').each( function () {
     	        var title = $(this).text();
     	        $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
-    	    });  	   
+    	    });  */ 	   
     	    
 		   // var table = $('#datatableFuncionarios').DataTable();
 		    var table = $('#datatableFuncionarios').DataTable({
@@ -195,7 +195,7 @@
 		          }
 		        });   
 		    
-		   // Apply the search
+		   /* // Apply the search
     	    table.columns().every( function () {
     	        var that = this;
     	 
@@ -206,7 +206,7 @@
     	                    .draw();
     	            }
     	        } );
-    	    });
+    	    }); */
 		     	   
 		 
     	});
