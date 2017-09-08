@@ -81,7 +81,9 @@
 	        "<td class='dt-body-right'>"+municipios[m].cant_funcionarios+"</td>"+
 	        "<td class='dt-body-right'>"+municipios[m].cant_hombres+"</td>"+
 	        "<td class='dt-body-right'>"+municipios[m].cant_mujeres+"</td>"+
-	        "<td class='dt-body-right'>"+municipios[m].cant_pcd+"</td></tr>";	  
+	        "<td class='dt-body-right'>"+municipios[m].cant_pcd+"</td>"+
+	        "<td class='dt-body-right'>"+municipios[m].mes+"</td>"+
+	        "<td class='dt-body-right'>"+municipios[m].anho+"</td></tr>";	  
 	    }	    
 	    $('#cuerpoMunicipios').append(cuerpo);
 		$('#dataTableMunicipios').DataTable();
@@ -113,7 +115,7 @@
 			  var tablaOtroMunicipios = 
 			  "<table id='dataTableOtroMunicipios' class='table-responsive table table-hover table-bordered'>"+
 			  	"<thead>"+
-					"<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>"+
+					"<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th><th>Mes</th><th>Año</th></tr>"+
               	"</thead>"+
               	"<tbody id='cuerpoOtroMunicipios'>"+
               		cuerpoOtroMunicipios +
@@ -135,7 +137,7 @@
 					var tablaOtroMunicipios = 
 						  "<table id='dataTableOtroMunicipios' class='table-responsive table table-hover table-bordered'>"+
 						  	"<thead>"+
-								"<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>"+
+								"<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th><th>Mes</th><th>Año</th></tr>"+
 			              	"</thead>"+
 			              	"<tbody id='cuerpoOtroMunicipios'>"+
 			              		cuerpoOtroMunicipios +
@@ -166,7 +168,7 @@
 					<div class="table-responsive">
 						<table id="dataTableMunicipios" class="table-responsive table table-hover table-bordered">
 						<thead>
-					 		<tr><th></th><th>Id</th><th>Nombre de la Oee</th><th>Total de Funcionarios</th><th>Total de Hombres</th><th>Total de Mujeres</th><th>Total de PcD</th></tr>
+					 		<tr><th></th><th>Id</th><th>Nombre de la Oee</th><th>Total de Funcionarios</th><th>Total de Hombres</th><th>Total de Mujeres</th><th>Total de PcD</th><th>Mes</th><th>Año</th></tr>
                         </thead>
                         <tbody id="cuerpoMunicipios">
                         </tbody>
@@ -185,7 +187,7 @@
 					<div class="table-responsive" id="divTableOtroMunicipios">
 						<table id="dataTableOtroMunicipios" class="table-responsive table table-hover table-bordered">
 							<thead>
-								<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th></tr>
+								<tr><th></th><th>Oee</th><th>DescricionOee</th><th>Total Funcionarios</th><th>Total Hombres</th><th>Total Mujeres</th><th>Total PcD</th><th>Mes</th><th>Año</th></tr>
 	                        </thead>
 	                        <tbody id="cuerpoOtroMunicipios">
 	                        </tbody>
